@@ -1,20 +1,4 @@
-<?php 
-if ( isset( $_POST['add a to-do'] ) )
-{
-    if (!empty($_POST["item"]))
-    {
-        echo '<h3> Active To-Do</h3>';
-        foreach ($_POST["item"] as $item);
-        {
-            echo '<p>'.$item.'</p>';
-        }
-    }
-    else
-    {
-        echo 'Please select an item';
-    }
-}
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -25,13 +9,36 @@ if ( isset( $_POST['add a to-do'] ) )
 </head>
 
 <body>
-        <h3 class="header">Add a To-Do </h3>
-        <form method="POST">
-            <p><input type="checkbox" name="item" value="ABC" />  ABC</p>
-            <p><input type="checkbox" name="item" value="BAC" />  BAC</p>
-            <p><input type="checkbox" name="item" value="CAB" />  CAB</p>
-            <p><input type="submit" name="submit" value="Add to list" /></p>
+    <form method="POST">
+        <h2> Add a To-Do </2>
+        <input type="text" name="todo_item" placeholder="Enter your item">
+        <button>Add to list</button>
+        <button>Reset</button>
+    <h3> Active To-Do </h3>
+        <p><input type="checkbox" name="item[]" value="jump" />  Jump</p>
+        <p><input type="checkbox" name="item[]" value="run" />  Run</p>
+        <p><input type="checkbox" name="item[]" value="skip" />  Skip</p>
+        <p><input type="submit" name="submit" value="Complete" /></p>
         </form>
 </body>
 </html>
 
+<?php 
+    $item = $_POST["item"];
+    echo $items[0];
+if ( isset( $_POST['submit'] ) )
+{
+    if (!empty($_POST["item"]))
+    {
+        echo '<h3> Completed To-Do</h3>';
+        foreach ($_POST["item"] as $item);
+        {
+            echo '<p>'.$item.'</p>';
+        }
+    }
+    else
+    {
+        echo 'Please select an item';
+    }
+}
+?>
